@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://fvynf4rlyjhw"]
+
+[ext_resource type="Texture2D" uid="uid://ck8yvajrlcgne" path="res://icon.svg" id="1_f5okj"]
+[ext_resource type="Script" uid="uid://cgo8uujmbjg5c" path="res://menu/start_button.gd" id="2_o5w3e"]
+
+[node name="MainMenu" type="Control" unique_id=538340806]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=2134626294]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.8784314, 0.8784314, 0.84705883, 1)
+
+[node name="Logo" type="TextureRect" parent="." unique_id=803686448]
+layout_mode = 0
+offset_left = 384.0
+offset_top = 162.0
+offset_right = 768.0
+offset_bottom = 378.0
+texture = ExtResource("1_f5okj")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="StartButton" type="Button" parent="." unique_id=540577482]
+layout_mode = 0
+offset_left = 432.0
+offset_top = 486.0
+offset_right = 720.0
+offset_bottom = 517.0
+text = "Play!"
+script = ExtResource("2_o5w3e")
+
+[connection signal="pressed" from="StartButton" to="StartButton" method="_on_pressed"]
