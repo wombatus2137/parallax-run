@@ -1,20 +1,38 @@
 [gd_scene format=3 uid="uid://wryppywlcluc"]
 
 [ext_resource type="PackedScene" uid="uid://m606jfjpfvft" path="res://game/player.tscn" id="1_l1rk1"]
+[ext_resource type="PackedScene" uid="uid://cnm2rjtd8qi5l" path="res://game/pit.tscn" id="2_vasa2"]
+[ext_resource type="PackedScene" uid="uid://bqqp53xhj067o" path="res://game/meteor.tscn" id="4_4fuuu"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_mq7fr"]
-size = Vector3(100, 1, 1)
+size = Vector3(3000, 1, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_l1rk1"]
-size = Vector3(100, 1, 1)
+size = Vector3(3000, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vasa2"]
+albedo_color = Color(0.8784314, 0.8784314, 0.84705883, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vasa2"]
-size = Vector3(100, 1.2, 1)
+size = Vector3(3000, 1.2, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_h7iqs"]
-size = Vector3(100, 1.2, 1)
+size = Vector3(3000, 1.2, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h7iqs"]
+albedo_color = Color(0.8156863, 0.8156863, 0.78431374, 1)
 
 [node name="Game" type="Node3D" unique_id=662628560]
+
+[node name="WarningLabel" type="RichTextLabel" parent="." unique_id=187496664]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 162.0
+grow_horizontal = 2
+theme_override_font_sizes/bold_font_size = 60
+bbcode_enabled = true
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1429334383]
 transform = Transform3D(0.99619484, -0.0038016797, -0.08707279, 0, 0.99904823, -0.04361939, 0.087155744, 0.043453403, 0.9952467, 2, 1.7, 2.5)
@@ -25,30 +43,38 @@ transform = Transform3D(0.64278764, -0.09335733, 0.76033443, 0, 0.9925461, 0.121
 shadow_enabled = true
 
 [node name="GroundNear" type="StaticBody3D" parent="." unique_id=1805331631]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1450, 0.5, 0.5)
+collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="GroundNear" unique_id=1939765299]
 shape = SubResource("BoxShape3D_mq7fr")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="GroundNear" unique_id=2053169635]
 mesh = SubResource("BoxMesh_l1rk1")
+surface_material_override/0 = SubResource("StandardMaterial3D_vasa2")
 
 [node name="GroundFar" type="StaticBody3D" parent="." unique_id=1070500466]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, -2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1450, 0.7, -2)
+collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="GroundFar" unique_id=637088821]
 shape = SubResource("BoxShape3D_vasa2")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="GroundFar" unique_id=947092472]
 mesh = SubResource("BoxMesh_h7iqs")
+surface_material_override/0 = SubResource("StandardMaterial3D_h7iqs")
 
 [node name="Player" parent="." unique_id=1984117945 instance=ExtResource("1_l1rk1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1.35, 0.5)
-speed = 6.0
-jump_velocity = 4.5
 
 [node name="Player2" parent="." unique_id=1095472055 instance=ExtResource("1_l1rk1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1.7, -2)
-speed = 6.0
-jump_velocity = 4.5
 jump_input = &"jump_p2"
+crouch_input = &"crouch_p2"
+
+[node name="Pit" parent="." unique_id=1981660112 instance=ExtResource("2_vasa2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 1, 0.5)
+
+[node name="Meteor" parent="." unique_id=1907409397 instance=ExtResource("4_4fuuu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33, 9, 0.5)
+is_early = true

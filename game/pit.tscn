@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://cnm2rjtd8qi5l"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vhgle"]
+size = Vector3(1, 0.2, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_mo0l2"]
+size = Vector3(1.2, 0.2, 1.2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vhgle"]
+albedo_color = Color(0, 0, 0, 1)
+
+[node name="Pit" type="CharacterBody3D" unique_id=1981660112 groups=["danger"]]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1451670830]
+shape = SubResource("BoxShape3D_vhgle")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1787254480]
+mesh = SubResource("BoxMesh_mo0l2")
+surface_material_override/0 = SubResource("StandardMaterial3D_vhgle")
+
+[node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="." unique_id=1443660348]

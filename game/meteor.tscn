@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://bqqp53xhj067o"]
+
+[ext_resource type="Script" uid="uid://ci6kn68obs0r8" path="res://game/meteor.gd" id="1_wc7la"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_2d6fx"]
+radius = 0.1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ngg0y"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_ac13h"]
+radius = 0.1
+height = 0.2
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wc7la"]
+
+[node name="Meteor" type="CharacterBody3D" unique_id=1907409397 groups=["danger"]]
+collision_layer = 4
+script = ExtResource("1_wc7la")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1227513512]
+shape = SubResource("SphereShape3D_2d6fx")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1793147644]
+material_override = SubResource("StandardMaterial3D_ngg0y")
+mesh = SubResource("SphereMesh_ac13h")
+
+[node name="Area3D" type="Area3D" parent="." unique_id=74279213]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=195312492]
+shape = SubResource("BoxShape3D_wc7la")
+
+[node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="." unique_id=631741573 groups=["danger"]]
+
+[node name="WarningTimer" type="Timer" parent="." unique_id=365806996]
+one_shot = true
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="timeout" from="WarningTimer" to="." method="_on_warning_timer_timeout"]

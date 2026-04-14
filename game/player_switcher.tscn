@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://depkl3tj0n5xl"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ghixo"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_ghixo"]
+radius = 0.2
+height = 1.0
+
+[node name="PlayerSwitcher" type="CharacterBody3D" unique_id=1035937243 groups=["player_switchers"]]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1908267653]
+shape = SubResource("BoxShape3D_ghixo")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1174599529]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.9, 0)
+mesh = SubResource("CapsuleMesh_ghixo")
+
+[node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="." unique_id=1166916824]
