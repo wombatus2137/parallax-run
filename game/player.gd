@@ -5,7 +5,7 @@ extends CharacterBody3D
 @export var jump_velocity := 5.0
 @export var jump_input: StringName = "jump"
 @export var crouch_input: StringName = "crouch"
-@onready var player2_material := preload("res://materials/player2_material_3d.tres")
+@onready var player2_material := preload("res://assets/player2_material_3d.tres")
 @onready var mob_collision_shape := get_node("Area3D/CollisionShape3D")
 @onready var main_node := get_node("..")
 

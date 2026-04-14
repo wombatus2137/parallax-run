@@ -23,11 +23,9 @@ func _ready() -> void:
 	while danger_location.progress < 2950 and danger_location2.progress < 2950:
 		if randi_range(0, 1):
 			next_danger_location = danger_location
-			print(danger_location.position)
 		else:
 			next_danger_location = danger_location2
-			print(danger_location2.position)
-		next_danger_location.progress += randf_range(2, 20)
+		next_danger_location.progress += randf_range(3, 20)
 		next_danger_index = randi_range(0, dangers.size() - 1)
 		next_danger_instance = dangers[next_danger_index].instantiate()
 		add_child(next_danger_instance)

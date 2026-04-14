@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cnm2rjtd8qi5l"]
 
-[ext_resource type="Material" uid="uid://b1vtmirnf4wfj" path="res://materials/danger_material_3d.tres" id="1_brkpx"]
+[ext_resource type="Material" uid="uid://b1vtmirnf4wfj" path="res://assets/danger_material_3d.tres" id="1_brkpx"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vhgle"]
 size = Vector3(1, 0.2, 1)

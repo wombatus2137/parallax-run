@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://bqqp53xhj067o"]
 
 [ext_resource type="Script" uid="uid://ci6kn68obs0r8" path="res://game/meteor.gd" id="1_wc7la"]
-[ext_resource type="Material" uid="uid://b1vtmirnf4wfj" path="res://materials/danger_material_3d.tres" id="2_2d6fx"]
+[ext_resource type="Material" uid="uid://b1vtmirnf4wfj" path="res://assets/danger_material_3d.tres" id="2_2d6fx"]
+[ext_resource type="PackedScene" uid="uid://j15g7w5xe6wy" path="res://assets/fire_particles.tscn" id="3_ngg0y"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_2d6fx"]
 radius = 0.1
@@ -31,5 +32,7 @@ collision_mask = 2
 shape = SubResource("BoxShape3D_wc7la")
 
 [node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="." unique_id=631741573 groups=["danger"]]
+
+[node name="FireParticles" parent="." unique_id=1503841105 instance=ExtResource("3_ngg0y")]
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

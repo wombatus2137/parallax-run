@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://m606jfjpfvft"]
 
 [ext_resource type="Script" uid="uid://c26sxxko0xmlj" path="res://game/player.gd" id="1_dadds"]
-[ext_resource type="Material" uid="uid://ckuwnmljmrmtb" path="res://materials/player_material_3d.tres" id="2_w5y0b"]
+[ext_resource type="Material" uid="uid://ckuwnmljmrmtb" path="res://assets/player_material_3d.tres" id="2_w5y0b"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_dadds"]
 radius = 0.1
