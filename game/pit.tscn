@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cnm2rjtd8qi5l"]
 
 [ext_resource type="Material" uid="uid://b1vtmirnf4wfj" path="res://assets/danger_material_3d.tres" id="1_brkpx"]
+[ext_resource type="PackedScene" uid="uid://j15g7w5xe6wy" path="res://assets/fire_particles.tscn" id="2_kdsor"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vhgle"]
 size = Vector3(1, 0.2, 1)
@@ -20,3 +21,6 @@ shape = SubResource("BoxShape3D_vhgle")
 mesh = SubResource("BoxMesh_mo0l2")
 
 [node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="." unique_id=1443660348]
+
+[node name="FireParticles" parent="." unique_id=1503841105 instance=ExtResource("2_kdsor")]
+amount = 5

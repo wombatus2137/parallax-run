@@ -2,9 +2,26 @@
 
 [ext_resource type="Script" uid="uid://buufnlkdgbmxj" path="res://game/game.gd" id="1_4fuuu"]
 [ext_resource type="PackedScene" uid="uid://m606jfjpfvft" path="res://game/player.tscn" id="1_l1rk1"]
+[ext_resource type="Shader" uid="uid://b3gdqen7mkyj4" path="res://assets/new_shader.gdshader" id="2_4fuuu"]
 [ext_resource type="Material" uid="uid://vrbx7ukud53b" path="res://assets/ground_material_3d.tres" id="2_dxrkv"]
-[ext_resource type="PackedScene" uid="uid://cnm2rjtd8qi5l" path="res://game/pit.tscn" id="2_vasa2"]
-[ext_resource type="PackedScene" uid="uid://bqqp53xhj067o" path="res://game/meteor.tscn" id="4_4fuuu"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dxrkv"]
+shader = ExtResource("2_4fuuu")
+shader_parameter/rayleigh_strength = 1.614000076665
+shader_parameter/mie_strength = 0.7810000370975
+shader_parameter/ozone_strength = 1.9210000912475
+shader_parameter/atmosphere_density = 2.3600001121
+shader_parameter/exposure = 10.0
+shader_parameter/sun_disc_feather = 0.1
+shader_parameter/sundisc_intensity = 10.0
+shader_parameter/use_debanding = true
+
+[sub_resource type="Sky" id="Sky_dakft"]
+sky_material = SubResource("ShaderMaterial_dxrkv")
+
+[sub_resource type="Environment" id="Environment_u5opy"]
+background_mode = 2
+sky = SubResource("Sky_dakft")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_mq7fr"]
 size = Vector3(3000, 1, 1)
@@ -36,6 +53,64 @@ point_count = 2
 
 [node name="Game" type="Node3D" unique_id=662628560]
 script = ExtResource("1_4fuuu")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1637605928]
+environment = SubResource("Environment_u5opy")
+
+[node name="GameOver" type="Control" parent="." unique_id=1041767439]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="GameOver" unique_id=1277070438]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.8784314, 0.8784314, 0.84705883, 1)
+
+[node name="Label" type="Label" parent="GameOver" unique_id=1594037367]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 48
+text = "GAME OVER"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Score" type="Label" parent="GameOver" unique_id=476552015]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -126.0
+offset_bottom = -103.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 32
+text = "Score: 0"
+horizontal_alignment = 1
+
+[node name="Lives" type="Label" parent="." unique_id=63818020]
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_colors/font_color = Color(0.8784314, 0.8784314, 0.84705883, 1)
+theme_override_font_sizes/font_size = 36
+text = "Lives: 10"
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1429334383]
 transform = Transform3D(0.99619484, -0.0038016797, -0.08707279, 0, 0.99904823, -0.04361939, 0.087155744, 0.043453403, 0.9952467, 2, 0.7, 2.5)
@@ -84,9 +159,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.35, 0.5)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.7, -2)
 jump_input = &"jump_p2"
 crouch_input = &"crouch_p2"
-
-[node name="Pit" parent="." unique_id=1981660112 instance=ExtResource("2_vasa2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, 0.5)
-
-[node name="Meteor" parent="." unique_id=1907409397 instance=ExtResource("4_4fuuu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33, 8, 0.5)

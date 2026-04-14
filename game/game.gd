@@ -7,7 +7,7 @@ extends Node3D
 @onready var danger_location2 = get_node("Path3D2/PathFollow3D")
 var next_danger_location: Node
 @onready var dangers: Array[PackedScene] = [
-	preload("res://game/meteor.tscn"),
+	preload("res://game/pit.tscn"),
 	preload("res://game/player_switcher.tscn"),
 	preload("res://game/meteor.tscn"),
 	preload("res://game/meteor.tscn"),
@@ -16,6 +16,7 @@ var next_danger_index: int
 var next_danger_instance: Node
 @onready var player := get_node("Player")
 @onready var player2 := get_node("Player2")
+var is_game_over: bool
 
 
 # Called when the node enters the scene tree for the first time.
@@ -39,9 +40,27 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	camera.position.x += camera_speed * delta
+	
+	if is_game_over == true:
+		if Input.is_action_pressed("jump"):
+			get_tree().reload_current_scene()
 
 
 func switch_players() -> void:
 	var old_position = player.position
 	player.position = player2.position
 	player2.position = old_position
+
+
+func game_over() -> void:
+	var lives = get_node("Lives")
+	var lives_count := int(lives.text.trim_prefix("Lives: "))
+	lives_count -= 1
+	lives.text = "Lives: " + str(lives_count)
+	if lives_count == 0:
+		var score = get_node("GameOver/Score")
+		score.text = "Score: " + str(int(player.position.x))
+		player.set_physics_process(0)
+		player2.set_physics_process(0)
+		is_game_over = true
+		get_node("GameOver").visible = 1
