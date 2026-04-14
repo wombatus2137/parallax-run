@@ -1,17 +1,16 @@
 [gd_scene format=3 uid="uid://m606jfjpfvft"]
 
 [ext_resource type="Script" uid="uid://c26sxxko0xmlj" path="res://game/player.gd" id="1_dadds"]
+[ext_resource type="Material" uid="uid://ckuwnmljmrmtb" path="res://materials/player_material_3d.tres" id="2_w5y0b"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_dadds"]
 radius = 0.1
 height = 0.7
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_du4nq"]
+material = ExtResource("2_w5y0b")
 radius = 0.1
 height = 0.7
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dadds"]
-albedo_color = Color(0.1254902, 0.1254902, 0.09411765, 1)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_w5y0b"]
 radius = 0.05
@@ -26,7 +25,6 @@ shape = SubResource("CapsuleShape3D_dadds")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1592217719]
 mesh = SubResource("CapsuleMesh_du4nq")
-surface_material_override/0 = SubResource("StandardMaterial3D_dadds")
 
 [node name="Area3D" type="Area3D" parent="." unique_id=14429164]
 collision_layer = 2
@@ -35,8 +33,4 @@ collision_mask = 4
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1939671665]
 shape = SubResource("CapsuleShape3D_w5y0b")
 
-[node name="SwitchTimer" type="Timer" parent="." unique_id=508964292]
-one_shot = true
-
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
-[connection signal="timeout" from="SwitchTimer" to="." method="_on_switch_timer_timeout"]

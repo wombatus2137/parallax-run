@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://wryppywlcluc"]
 
+[ext_resource type="Script" uid="uid://buufnlkdgbmxj" path="res://game/game.gd" id="1_4fuuu"]
 [ext_resource type="PackedScene" uid="uid://m606jfjpfvft" path="res://game/player.tscn" id="1_l1rk1"]
+[ext_resource type="Material" uid="uid://vrbx7ukud53b" path="res://materials/ground_material_3d.tres" id="2_dxrkv"]
 [ext_resource type="PackedScene" uid="uid://cnm2rjtd8qi5l" path="res://game/pit.tscn" id="2_vasa2"]
 [ext_resource type="PackedScene" uid="uid://bqqp53xhj067o" path="res://game/meteor.tscn" id="4_4fuuu"]
 
@@ -8,31 +10,32 @@
 size = Vector3(3000, 1, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_l1rk1"]
+material = ExtResource("2_dxrkv")
 size = Vector3(3000, 1, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vasa2"]
-albedo_color = Color(0.8784314, 0.8784314, 0.84705883, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vasa2"]
 size = Vector3(3000, 1.2, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_h7iqs"]
+material = ExtResource("2_dxrkv")
 size = Vector3(3000, 1.2, 1)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h7iqs"]
-albedo_color = Color(0.8156863, 0.8156863, 0.78431374, 1)
+[sub_resource type="Curve3D" id="Curve3D_dxrkv"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 7, 0, 0.5, 0, 0, 0, 0, 0, 0, 3000, 0, 0.5),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_4fuuu"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 7, 0.3, -2, 0, 0, 0, 0, 0, 0, 3000, 0.3, -2),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
 
 [node name="Game" type="Node3D" unique_id=662628560]
-
-[node name="WarningLabel" type="RichTextLabel" parent="." unique_id=187496664]
-anchors_preset = 10
-anchor_right = 1.0
-offset_bottom = 162.0
-grow_horizontal = 2
-theme_override_font_sizes/bold_font_size = 60
-bbcode_enabled = true
-horizontal_alignment = 1
-vertical_alignment = 1
+script = ExtResource("1_4fuuu")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1429334383]
 transform = Transform3D(0.99619484, -0.0038016797, -0.08707279, 0, 0.99904823, -0.04361939, 0.087155744, 0.043453403, 0.9952467, 2, 0.7, 2.5)
@@ -51,7 +54,6 @@ shape = SubResource("BoxShape3D_mq7fr")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="GroundNear" unique_id=2053169635]
 mesh = SubResource("BoxMesh_l1rk1")
-surface_material_override/0 = SubResource("StandardMaterial3D_vasa2")
 
 [node name="GroundFar" type="StaticBody3D" parent="." unique_id=1070500466]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1450, -0.3, -2)
@@ -62,7 +64,18 @@ shape = SubResource("BoxShape3D_vasa2")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="GroundFar" unique_id=947092472]
 mesh = SubResource("BoxMesh_h7iqs")
-surface_material_override/0 = SubResource("StandardMaterial3D_h7iqs")
+
+[node name="Path3D" type="Path3D" parent="." unique_id=352354781]
+curve = SubResource("Curve3D_dxrkv")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="Path3D" unique_id=1955940596]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 7, 0, 0.5)
+
+[node name="Path3D2" type="Path3D" parent="." unique_id=720156728]
+curve = SubResource("Curve3D_4fuuu")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="Path3D2" unique_id=997614846]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 7, 0.3, -2)
 
 [node name="Player" parent="." unique_id=1984117945 instance=ExtResource("1_l1rk1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.35, 0.5)

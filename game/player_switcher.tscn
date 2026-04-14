@@ -1,20 +1,29 @@
 [gd_scene format=3 uid="uid://depkl3tj0n5xl"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_ghixo"]
+[ext_resource type="Material" uid="uid://clyttofmjdgdo" path="res://materials/player_switcher_material_3d.tres" id="1_5tloj"]
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_ghixo"]
-radius = 0.2
-height = 1.0
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_ghixo"]
+height = 0.2
+radius = 0.3
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_ghixo"]
+material = ExtResource("1_5tloj")
+top_radius = 0.3
+bottom_radius = 0.3
+height = 0.2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5tloj"]
+albedo_color = Color(0.8691911, 0.43348047, 0.16862231, 1)
 
 [node name="PlayerSwitcher" type="CharacterBody3D" unique_id=1035937243 groups=["player_switchers"]]
 collision_layer = 4
 collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1908267653]
-shape = SubResource("BoxShape3D_ghixo")
+shape = SubResource("CylinderShape3D_ghixo")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1174599529]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.9, 0)
-mesh = SubResource("CapsuleMesh_ghixo")
+mesh = SubResource("CylinderMesh_ghixo")
+surface_material_override/0 = SubResource("StandardMaterial3D_5tloj")
 
 [node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="." unique_id=1166916824]
