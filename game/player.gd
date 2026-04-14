@@ -28,7 +28,7 @@ func _physics_process(delta: float) -> void:
 	
 	if Input.is_action_just_pressed(crouch_input):
 		mob_collision_shape.shape.height = 0.3
-		#mob_collision_shape.position.y -= 0.15
+		mob_collision_shape.position.y -= 0.15
 		mesh_instance.mesh.height = 0.4
 		collision_shape.shape.height = 0.4
 		position.y -= 0.2
