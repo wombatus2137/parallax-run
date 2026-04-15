@@ -14,7 +14,7 @@ extends CharacterBody3D
 
 func _ready() -> void:
 	if name == "Player2":
-		get_node("MeshInstance3D").set_surface_override_material(0, player2_material)
+		mesh_instance.set_surface_override_material(0, player2_material)
 
 
 func _physics_process(delta: float) -> void:
@@ -26,19 +26,13 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed(jump_input) and is_on_floor():
 		velocity.y = jump_velocity
 	
-	if Input.is_action_just_pressed(crouch_input):
-		mob_collision_shape.shape.height = 0.3
-		mob_collision_shape.position.y -= 0.15
-		mesh_instance.mesh.height = 0.4
+	if Input.is_action_just_pressed(crouch_input) and is_on_floor():
 		collision_shape.shape.height = 0.4
-		position.y -= 0.2
+		mesh_instance.mesh.height = 0.4
 	
 	if Input.is_action_just_released(crouch_input):
-		mob_collision_shape.shape.height = 0.7
-		mob_collision_shape.position.y += 0.15
-		mesh_instance.mesh.height = 0.7
 		collision_shape.shape.height = 0.7
-		position.y += 0.2
+		mesh_instance.mesh.height = 0.7
 	
 	velocity.x = speed
 	velocity.z = 0
@@ -48,6 +42,6 @@ func _physics_process(delta: float) -> void:
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	if body.is_in_group("danger"):
-		main_node.game_over()
+		main_node.player_hit()
 	elif body.is_in_group("player_switchers"):
 		main_node.switch_players()

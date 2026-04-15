@@ -20,34 +20,40 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.8784314, 0.8784314, 0.84705883, 1)
+color = Color(0.010314095, 0.010275347, 0.10012395, 1)
 
 [node name="Logo" type="TextureRect" parent="." unique_id=803686448]
-layout_mode = 0
-offset_left = 453.0
-offset_top = 156.0
-offset_right = 837.0
-offset_bottom = 372.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -215.0
+offset_top = -215.0
+offset_right = 509.0
+offset_bottom = 644.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_f5okj")
 expand_mode = 1
 stretch_mode = 4
 
-[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=1701852362]
-layout_mode = 0
-offset_left = 440.0
-offset_top = 346.0
-offset_right = 815.0
-offset_bottom = 466.0
-theme_override_colors/default_color = Color(0.88235295, 0.24313726, 0.02745098, 1)
-theme_override_font_sizes/normal_font_size = 31
-text = "Parallax Runner"
-
 [node name="StartButton" type="Button" parent="." unique_id=540577482]
-layout_mode = 0
-offset_left = 432.0
-offset_top = 486.0
-offset_right = 720.0
-offset_bottom = 517.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -39.5
+offset_top = 220.0
+offset_right = 39.5
+offset_bottom = 272.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 31
 text = "Play!"
 script = ExtResource("2_o5w3e")
 

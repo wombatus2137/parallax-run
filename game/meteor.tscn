@@ -13,6 +13,7 @@ radius = 0.1
 height = 0.2
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wc7la"]
+resource_local_to_scene = true
 
 [node name="Meteor" type="CharacterBody3D" unique_id=1907409397 groups=["danger"]]
 collision_layer = 4

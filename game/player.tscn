@@ -4,10 +4,12 @@
 [ext_resource type="Material" uid="uid://ckuwnmljmrmtb" path="res://assets/player_material_3d.tres" id="2_w5y0b"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_dadds"]
+resource_local_to_scene = true
 radius = 0.1
 height = 0.7
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_du4nq"]
+resource_local_to_scene = true
 material = ExtResource("2_w5y0b")
 radius = 0.1
 height = 0.7

@@ -3,7 +3,9 @@
 [ext_resource type="Texture2D" uid="uid://cekskojetvt2g" path="res://assets/fire.png" id="1_fehbf"]
 
 [resource]
-transparency = 1
-albedo_color = Color(0.8332386, 0.3823796, 0.10836289, 1)
+albedo_color = Color(0.99999994, 0.3419549, 0.20102257, 1)
+albedo_texture = ExtResource("1_fehbf")
+albedo_texture_force_srgb = true
+albedo_texture_msdf = true
 metallic = 1.0
 metallic_texture = ExtResource("1_fehbf")

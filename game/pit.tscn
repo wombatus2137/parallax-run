@@ -1,14 +1,24 @@
 [gd_scene format=3 uid="uid://cnm2rjtd8qi5l"]
 
 [ext_resource type="Material" uid="uid://b1vtmirnf4wfj" path="res://assets/danger_material_3d.tres" id="1_brkpx"]
+[ext_resource type="Material" uid="uid://vrbx7ukud53b" path="res://assets/ground_material_3d.tres" id="1_kdsor"]
 [ext_resource type="PackedScene" uid="uid://j15g7w5xe6wy" path="res://assets/fire_particles.tscn" id="2_kdsor"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vhgle"]
 size = Vector3(1, 0.2, 1)
 
-[sub_resource type="BoxMesh" id="BoxMesh_mo0l2"]
+[sub_resource type="CylinderMesh" id="CylinderMesh_8ytf3"]
+material = ExtResource("1_kdsor")
+top_radius = 0.3
+bottom_radius = 0.4
+height = 0.2
+cap_top = false
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_71ad1"]
 material = ExtResource("1_brkpx")
-size = Vector3(1.2, 0.2, 1.2)
+top_radius = 0.3
+bottom_radius = 0.3
+height = 0.15
 
 [node name="Pit" type="CharacterBody3D" unique_id=1981660112 groups=["danger"]]
 collision_layer = 4
@@ -18,9 +28,11 @@ collision_mask = 0
 shape = SubResource("BoxShape3D_vhgle")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1787254480]
-mesh = SubResource("BoxMesh_mo0l2")
+mesh = SubResource("CylinderMesh_8ytf3")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=2145468194]
+mesh = SubResource("CylinderMesh_71ad1")
 
 [node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="." unique_id=1443660348]
 
 [node name="FireParticles" parent="." unique_id=1503841105 instance=ExtResource("2_kdsor")]
-amount = 5

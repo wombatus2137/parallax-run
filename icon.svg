@@ -2,9 +2,9 @@
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
 
 <svg
-   width="1080"
-   height="1080"
-   viewBox="0 0 1080 1080"
+   width="724"
+   height="859"
+   viewBox="0 0 724 859"
    version="1.1"
    id="svg1"
    xmlns="http://www.w3.org/2000/svg"
@@ -12,19 +12,37 @@
   <defs
      id="defs1" />
   <g
-     id="layer1">
-    <rect
-       style="fill:#e13e07;fill-opacity:1;stroke:none;stroke-width:0;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
-       id="rect6"
-       width="510"
-       height="180"
-       x="30"
-       y="450"
-       rx="0.29999998" />
+     id="g4"
+     transform="translate(7.91252,-254.00001)"
+     style="stroke:#202076;stroke-opacity:1">
     <path
-       style="fill:#e13e07;fill-opacity:1;stroke:none;stroke-width:0;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
-       id="path6"
-       d="m 944.50351,450 -606.75526,350.31032 0,-700.620635 z"
-       transform="matrix(0.88766814,0,0,0.53348988,240.19164,315.90914)" />
+       style="fill:#e13e07;stroke:#202076;stroke-width:32;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+       d="M 8.08748,809.91212 548,270.00001"
+       id="path2" />
+    <path
+       style="fill:#e13e07;stroke:#202076;stroke-width:32;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+       d="M 278.00001,270.00001 H 548"
+       id="path3" />
+    <path
+       style="fill:#e13e07;stroke:#202076;stroke-width:32;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+       d="M 548,540 V 270.00001"
+       id="path4" />
+  </g>
+  <g
+     id="g4-4"
+     transform="translate(158.91251,31.99998)"
+     style="stroke:#202076;stroke-opacity:1">
+    <path
+       style="fill:#e13e07;stroke:#202076;stroke-width:32;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+       d="M 8.08748,809.91212 548,270.00001"
+       id="path2-5" />
+    <path
+       style="fill:#e13e07;stroke:#202076;stroke-width:32;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+       d="M 278.00001,270.00001 H 548"
+       id="path3-5" />
+    <path
+       style="fill:#e13e07;stroke:#202076;stroke-width:32;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+       d="M 548,540 V 270.00001"
+       id="path4-1" />
   </g>
 </svg>

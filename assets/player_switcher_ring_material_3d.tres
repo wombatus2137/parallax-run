@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://2kkluo4utimw"]
+
+[ext_resource type="Texture2D" uid="uid://ds7r5fb0dsvpu" path="res://assets/player_switcher_gradient_texture_2d.tres" id="1_wyuxa"]
+
+[resource]
+albedo_color = Color(0.9040636, 0.72214955, 0.06892797, 1)
+albedo_texture = ExtResource("1_wyuxa")

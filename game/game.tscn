@@ -2,40 +2,34 @@
 
 [ext_resource type="Script" uid="uid://buufnlkdgbmxj" path="res://game/game.gd" id="1_4fuuu"]
 [ext_resource type="PackedScene" uid="uid://m606jfjpfvft" path="res://game/player.tscn" id="1_l1rk1"]
-[ext_resource type="Shader" uid="uid://b3gdqen7mkyj4" path="res://assets/new_shader.gdshader" id="2_4fuuu"]
 [ext_resource type="Material" uid="uid://vrbx7ukud53b" path="res://assets/ground_material_3d.tres" id="2_dxrkv"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_dxrkv"]
-shader = ExtResource("2_4fuuu")
-shader_parameter/rayleigh_strength = 1.614000076665
-shader_parameter/mie_strength = 0.7810000370975
-shader_parameter/ozone_strength = 1.9210000912475
-shader_parameter/atmosphere_density = 2.3600001121
-shader_parameter/exposure = 10.0
-shader_parameter/sun_disc_feather = 0.1
-shader_parameter/sundisc_intensity = 10.0
-shader_parameter/use_debanding = true
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_h7iqs"]
+sky_top_color = Color(0.8400074, 0.45976084, 0.28354418, 1)
+sky_horizon_color = Color(0.6629277, 0.21520165, 0.08622744, 1)
+ground_bottom_color = Color(0.117135696, 0.06494395, 0.00032837206, 1)
+ground_horizon_color = Color(0.6627451, 0.21568628, 0.08627451, 1)
 
 [sub_resource type="Sky" id="Sky_dakft"]
-sky_material = SubResource("ShaderMaterial_dxrkv")
+sky_material = SubResource("ProceduralSkyMaterial_h7iqs")
 
 [sub_resource type="Environment" id="Environment_u5opy"]
 background_mode = 2
 sky = SubResource("Sky_dakft")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_mq7fr"]
-size = Vector3(3000, 1, 1)
+size = Vector3(20, 1, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_l1rk1"]
 material = ExtResource("2_dxrkv")
-size = Vector3(3000, 1, 1)
+size = Vector3(20, 1, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vasa2"]
-size = Vector3(3000, 1.2, 1)
+size = Vector3(20, 1.2, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_h7iqs"]
 material = ExtResource("2_dxrkv")
-size = Vector3(3000, 1.2, 1)
+size = Vector3(20, 1.2, 1)
 
 [sub_resource type="Curve3D" id="Curve3D_dxrkv"]
 _data = {
@@ -73,7 +67,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.8784314, 0.8784314, 0.84705883, 1)
+color = Color(0.011764706, 0.011764706, 0.101960786, 1)
 
 [node name="Label" type="Label" parent="GameOver" unique_id=1594037367]
 layout_mode = 1
@@ -82,8 +76,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 48
 text = "GAME OVER"
 horizontal_alignment = 1
@@ -99,8 +91,6 @@ offset_top = -126.0
 offset_bottom = -103.0
 grow_horizontal = 2
 grow_vertical = 0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 32
 text = "Score: 0"
 horizontal_alignment = 1
@@ -108,7 +98,8 @@ horizontal_alignment = 1
 [node name="Lives" type="Label" parent="." unique_id=63818020]
 offset_right = 40.0
 offset_bottom = 23.0
-theme_override_colors/font_color = Color(0.8784314, 0.8784314, 0.84705883, 1)
+theme_override_colors/font_color = Color(0.011764706, 0.011764706, 0.101960786, 1)
+theme_override_colors/font_outline_color = Color(0.011764706, 0.011764706, 0.101960786, 1)
 theme_override_font_sizes/font_size = 36
 text = "Lives: 10"
 
@@ -121,7 +112,7 @@ transform = Transform3D(0.64278764, -0.09335733, 0.76033443, 0, 0.9925461, 0.121
 shadow_enabled = true
 
 [node name="GroundNear" type="StaticBody3D" parent="." unique_id=1805331631]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1450, -0.5, 0.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0.5)
 collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="GroundNear" unique_id=1939765299]
@@ -131,7 +122,7 @@ shape = SubResource("BoxShape3D_mq7fr")
 mesh = SubResource("BoxMesh_l1rk1")
 
 [node name="GroundFar" type="StaticBody3D" parent="." unique_id=1070500466]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1450, -0.3, -2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.3, -2)
 collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="GroundFar" unique_id=637088821]
@@ -157,4 +148,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.35, 0.5)
 
 [node name="Player2" parent="." unique_id=1095472055 instance=ExtResource("1_l1rk1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.7, -2)
-jump_input = &"jump_p2"
+jump_input = &"jump2"
+crouch_input = &"crouch2"
+
+[node name="GameOverTimer" type="Timer" parent="." unique_id=336969440]
+one_shot = true
+
+[connection signal="timeout" from="GameOverTimer" to="." method="_on_game_over_timer_timeout"]
